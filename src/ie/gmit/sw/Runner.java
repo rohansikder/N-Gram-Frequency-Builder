@@ -5,33 +5,55 @@ import java.util.Scanner;
 public class Runner {
 
 	public static void main(String[] args) throws Exception {
-		//You should put the following code into a menu or Menu class
-		System.out.println(ConsoleColour.WHITE);
-		System.out.println("************************************************************");
-		System.out.println("*      GMIT - Dept. Computer Science & Applied Physics     *");
-		System.out.println("*                                                          *");
-		System.out.println("*                  N-Gram Frequency Builder                *");
-		System.out.println("*                                                          *");
-		System.out.println("************************************************************");
-		System.out.println("(1) Specify Text File Directory");
-		System.out.println("(2) Specify n-Gram Size");
-		System.out.println("(3) Specify Output File");
-		System.out.println("(4) Build n-Grams ");
-		System.out.println("(5) Quit");
 		
-		//Output a menu of options and solicit text from the user
-		System.out.print(ConsoleColour.BLACK_BOLD_BRIGHT);
-		System.out.print("Select Option [1-5]>");
-		System.out.println();
+		Menu m = new Menu();
+		m.showMenu();
 		
 		Scanner scanner = new Scanner(System.in);
-		
+
+		//Initialise Variables
 		int selection = 0;
+		String fileDir = null;
+		String outputFile; 
+		int ngramSize;
 		
-		while (selection != 5) {
-			 selection = scanner.nextInt();
-			 
+		selection = scanner.nextInt();
+		
+		
+		while (selection != 5) {	 
 			 //Do Something Here
+			 Parser p = new Parser();
+			 
+
+			 if(selection == 1) {
+				 System.out.println("Please enter Text File Directory:");
+				 fileDir = scanner.next();
+				 
+				 
+				 
+				 m.showMenu();
+				 selection = scanner.nextInt();
+			 }
+			  
+			 if(selection == 2) {
+				 System.out.println("Please enter N-Gram Size:");
+				 ngramSize = scanner.nextInt();
+				 p.process(fileDir, ngramSize);
+				 
+				 m.showMenu();
+				 selection = scanner.nextInt();
+			 }
+			 
+			 if(selection == 3) {
+				 System.out.println("Please enter Output File:");
+				 outputFile = scanner.next();
+				 p.output(outputFile);
+				 
+				 m.showMenu();
+				 selection = scanner.nextInt();
+			 }
+			 
+			 
 		}
 		
 		//You may want to include a progress meter in you assignment!

@@ -7,8 +7,6 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class Parser {
 	private Map<String, Long> frequency = new HashMap<>();
@@ -23,12 +21,16 @@ public class Parser {
 	}//End of Parse
 	
 	public void process(String file, int ngramSize)throws Exception{
-		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\DSA_Project\\DSA_Project\\bin\\books\\" + file)))){
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))){
 			String line = null;
 			
+			//C:\DSA_Project\DSA_Project\bin\books\BibleGod.txt
+			
 			while((line = br.readLine()) != null) {
-				String[] words = line.toLowerCase().trim().split(" ");
-				//A-z or a-z			
+				//Get rid of all ASCII characters other than the alphabet
+				//A-z or a-z
+				line = line.trim().replaceAll("[^a-zA-Z]", "");
+				String[] words = line.toLowerCase().split(" ");			
 				for(String word : words) {
 					char[] w = word.toCharArray();
 					int p = ngramSize;
@@ -42,29 +44,28 @@ public class Parser {
 							Long value = wordsFound.longValue();
 							wordsFound = Long.valueOf(value+1);
 						}
+						
 						frequency.put(charNum, wordsFound); //frequency.put(ngram, value);
 					}
-				}
+				}//End of for loop
 			}
-			output(file);//To stop weird infinite loop
 		}
 	}//End of process
 	
 	public void output(String file) throws Exception{
-		FileWriter fw = new FileWriter(new File(file));
-		
-		Set<Entry<String, Long>> kvs = frequency.entrySet();
-		//Loops Over entries and write out....
-				
-		System.out.println(kvs.size());
-		
+		//Automatically creates a csv file
+		FileWriter fw = new FileWriter(new File(file+".csv"));
+		//Loops Over entries and write out....		
 		 for (Map.Entry<String, Long> entry : frequency.entrySet()) {
 			   String key = (String) entry.getKey();
-			   Long value1 = entry.getValue();
+			   Long value = entry.getValue();
+			   
 			   //System.out.println(key);
 			   //System.out.println(value1);
 			   
-			   fw.write(key+","+value1+"\n");
+			   //Separates ngram and value with comma
+			   fw.write(key+","+value+"\n");
+			   
 		 }
 		
 		fw.flush();

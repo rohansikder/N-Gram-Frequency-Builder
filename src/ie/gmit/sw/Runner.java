@@ -14,47 +14,64 @@ public class Runner {
 		//Initialise Variables
 		int selection = 0;
 		String fileDir = null;
-		String outputFile; 
-		int ngramSize;
+		String outputFile = null; 
+		int ngramSize = 0;
 		
 		selection = scanner.nextInt();
 		
-		
-		while (selection != 5) {	 
-			 //Do Something Here
+		//Choose your option from menu
+		while (selection != 5 ) {	 
+			 
 			 Parser p = new Parser();
 			 
-
 			 if(selection == 1) {
 				 System.out.println("Please enter Text File Directory:");
 				 fileDir = scanner.next();
 				 
-				 
-				 
 				 m.showMenu();
 				 selection = scanner.nextInt();
 			 }
-			  
+			 
+			 
 			 if(selection == 2) {
 				 System.out.println("Please enter N-Gram Size:");
 				 ngramSize = scanner.nextInt();
-				 p.process(fileDir, ngramSize);
-				 
+				 if(ngramSize > 0) {				 
 				 m.showMenu();
 				 selection = scanner.nextInt();
+				 }
 			 }
 			 
 			 if(selection == 3) {
-				 System.out.println("Please enter Output File:");
+				 System.out.println("Please enter Output File Name:");
 				 outputFile = scanner.next();
-				 p.output(outputFile);
 				 
 				 m.showMenu();
 				 selection = scanner.nextInt();
+				 
+			 }
+			 	
+			 if(selection == 4) {
+				 //Checks if all params are entered before building n gram
+				 if(outputFile != null && ngramSize > 0 && fileDir != null) {
+				 p.process(fileDir, ngramSize);
+				 p.output(outputFile);
+				 System.out.println("\n"+outputFile + " has been outputted in CSV format!\n");	 
+				 }else {
+					 System.out.println("\nPlease enter information into each menu!\n");
+				 }
+				 m.showMenu();
+				 selection = scanner.nextInt();	 
 			 }
 			 
+			 //Exists if any other than 1-5 is selected
+			 if(selection > 5 || selection <= 0) {
+				 break;
+			 }
 			 
-		}
+		}//End Of While
+		
+		scanner.close();
 		
 		//You may want to include a progress meter in you assignment!
 		System.out.print(ConsoleColour.RED);	//Change the colour of the console text
@@ -105,7 +122,7 @@ public class Runner {
          * A StringBuilder should be used for string concatenation inside a 
          * loop. However, as the number of loop iterations is small, using
          * the "+" operator may be more efficient as the instructions can
-         * be optimized by the compiler. Either way, the performance overhead
+         * be optimised by the compiler. Either way, the performance overhead
          * will be marginal.  
          */
         StringBuilder sb = new StringBuilder();

@@ -20,10 +20,12 @@ public class Runner {
 		selection = scanner.nextInt();
 		
 		//Choose your option from menu
+		//Big-O Notation = O(1) : Constant
 		while (selection != 5 ) {	 
 			 
 			 Parser p = new Parser();
 			 
+			 //Big-O Notation = O(1): Constant
 			 if(selection == 1) {
 				 System.out.println("Please enter Text File Directory:");
 				 fileDir = scanner.next();
@@ -32,7 +34,7 @@ public class Runner {
 				 selection = scanner.nextInt();
 			 }
 			 
-			 
+			//Big-O Notation = O(1): Constant
 			 if(selection == 2) {
 				 System.out.println("Please enter N-Gram Size:");
 				 ngramSize = scanner.nextInt();
@@ -42,6 +44,7 @@ public class Runner {
 				 }
 			 }
 			 
+			//Big-O Notation = O(1): Constant
 			 if(selection == 3) {
 				 System.out.println("Please enter Output File Name:");
 				 outputFile = scanner.next();
@@ -51,6 +54,7 @@ public class Runner {
 				 
 			 }
 			 	
+			//Big-O Notation = O(1)
 			 if(selection == 4) {
 				 //Checks if all params are entered before building n gram
 				 if(outputFile != null && ngramSize > 0 && fileDir != null) {
@@ -65,6 +69,7 @@ public class Runner {
 			 }
 			 
 			 //Exists if any other than 1-5 is selected
+			//Big-O Notation = O(1)
 			 if(selection > 5 || selection <= 0) {
 				 break;
 			 }
@@ -76,6 +81,7 @@ public class Runner {
 		//You may want to include a progress meter in you assignment!
 		System.out.print(ConsoleColour.RED);	//Change the colour of the console text
 		int size = 100;							//The size of the meter. 100 equates to 100%
+		//Big-O Notation = O(n) : Incrementing Loop
 		for (int i =0 ; i < size ; i++) {		//The loop equates to a sequence of processing steps
 			printProgress(i + 1, size); 		//After each (some) steps, update the progress meter
 			Thread.sleep(10);					//Slows things down so the animation is visible 
@@ -109,6 +115,7 @@ public class Runner {
 	 * 
 	 */
 	public static void printProgress(int index, int total) {
+		//Big-O Notation = O(1)
 		if (index > total) return;	//Out of range
         int size = 50; 				//Must be less than console width
 	    char done = '=';			//Change to whatever you like.
@@ -127,6 +134,7 @@ public class Runner {
          */
         StringBuilder sb = new StringBuilder();
         sb.append("[");
+        //Big-O Notation = O(n) : Incrementing Loop
         for (int i = 0; i < size; i++) {
         	sb.append((i < completeLen) ? done : todo);
         }
@@ -139,6 +147,7 @@ public class Runner {
         System.out.print("\r" + sb + "] " + complete + "%");
         
         //Once the meter reaches its max, move to a new line.
+      //Big-O Notation = O(1)
         if (done == total) System.out.println("\n");
     }
 }

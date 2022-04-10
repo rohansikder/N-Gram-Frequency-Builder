@@ -31,6 +31,7 @@ public class Parser {
 				//Get rid of all ASCII characters other than the alphabet
 				//A-z or a-z
 				line = line.trim().replaceAll("[^a-zA-Z]", "");
+				//Makes characters lowercase
 				String[] words = line.toLowerCase().split(" ");
 				//Big-O Notation = O(n)
 				for(String word : words) {
@@ -50,6 +51,7 @@ public class Parser {
 							wordsFound = Long.valueOf(value+1);
 						}
 						
+						//Puts n-Gram and Frequancy into map
 						frequency.put(charNum, wordsFound); //frequency.put(ngram, value);
 					}
 				}//End of for loop
@@ -67,6 +69,7 @@ public class Parser {
 			   String key = (String) entry.getKey();
 			   Long value = entry.getValue();
 			   
+			   //Testing
 			   //System.out.println(key);
 			   //System.out.println(value1);
 			   

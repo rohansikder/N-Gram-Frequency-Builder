@@ -9,6 +9,7 @@ public class Runner {
 		Menu m = new Menu();
 		m.showMenu();
 		
+		//Keyboard
 		Scanner scanner = new Scanner(System.in);
 
 		//Initialise Variables
@@ -28,6 +29,9 @@ public class Runner {
 			 //Big-O Notation = O(1): Constant
 			 if(selection == 1) {
 				 System.out.println("Please enter Text File Directory:");
+				 System.out.println("E.g, C:\\DSA_Project\\DSA_Project\\bin\\books\\BibleGod.txt");
+				 System.out.println("A folder will is included with a few Books in .txt format");
+
 				 fileDir = scanner.next();
 				 
 				 m.showMenu();

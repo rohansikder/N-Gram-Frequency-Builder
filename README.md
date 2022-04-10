@@ -2,9 +2,12 @@
 
 
 N-Gram Frequency Builder
+
 N-Gram Frequency Builder is a Java N-Gram Frequency Builder to get the N-Gram of characters found in a piece of text which is stored in a .txt file.
+
 Installation:
 Please run Java -Xmx1G –cp ./ngrammer.jar ie.gmit.sw.Runner in Command Prompt whilst in the folder where the .JAR file is located.
+
 Usage:
 Option 1: Choose File Dir of your .txt File.  
 E.g., C:\DSA_Project\DSA_Project\bin\books\BibleGod.txt
@@ -21,15 +24,25 @@ Option 5: Exit application.
 Features:
 
 •	All Menu items are in the menu class.
+
 •	User Needs to enter valid items into all fields before N-gram is calculated.
+
 •	All characters other than the alphabet from A-Z are disregarded.
+
 •	White Space is disregarded.
+
 •	Every N-Gram is outputted to lowercase.
+
 •	All Big – O Notation is commented above Each loop.
+
 •	User does not need to enter .CSV when entering output Filename.
+
 •	Automatically sorts data into 2 rows within .CSV File.
+
 •	Terminal Progress meter is built-in for visual effect.
+
 •	Books folder will be included with various books.
+
 •	Paths and environmental variables are not hard-coded.
 
 Output Example: (N-Gram of 1 using BibleGod.txt)

@@ -1,7 +1,7 @@
 # N-Gram-Frequency-Builder
 
 
-N-Gram Frequency Builder
+
 
 N-Gram Frequency Builder is a Java N-Gram Frequency Builder to get the N-Gram of characters found in a piece of text which is stored in a .txt file.
 
